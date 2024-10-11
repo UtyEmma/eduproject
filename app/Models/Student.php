@@ -11,9 +11,11 @@ use Illuminate\Notifications\Notifiable;
 class Student extends Model {
     use HasFactory, HasUuids, Authenticatable, Notifiable;
 
-    protected $fillable = ['school_id', 'admission_no', 'roll_no', 'date_of_birth', 'student_photo', 'firstname', 'lastname', 'email', 'state', 'address', 'country', 'password', 'notes', 'gender', 'admission_date'];
+    protected $fillable = ['school_id', 'admission_no', 'roll_no', 'date_of_birth', 'photo', 'firstname', 'lastname', 'email', 'state', 'country', 'password', 'notes', 'gender', 'admission_date', 'current_address', 'permanent_address', 'lga', 'gender', 'birth_cert', 'lga_cert'];
 
-    
+    function school(){
+        return $this->belongsTo(School::class, 'school_id');
+    }    
 
 
 }

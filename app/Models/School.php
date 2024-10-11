@@ -20,4 +20,8 @@ class School extends Model
     function lga(){
         return $this->belongsTo(LocalGovernment::class, 'lga_id');
     }
+
+    function students(){
+        return $this->hasMany(Student::class, 'school_id');
+    }
 }
