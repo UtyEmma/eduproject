@@ -11,7 +11,7 @@ use Illuminate\Notifications\Notifiable;
 class Student extends Model {
     use HasFactory, HasUuids, Authenticatable, Notifiable;
 
-    protected $fillable = ['school_id', 'admission_no', 'firstname', 'lastname', 'email', 'password'];
+    protected $fillable = ['school_id', 'admission_no', 'roll_no', 'date_of_birth', 'student_photo', 'firstname', 'lastname', 'email', 'state', 'address', 'country', 'password', 'notes', 'gender', 'admission_date'];
 
     
 

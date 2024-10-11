@@ -15,6 +15,8 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->string('name');
             $table->string('capital');
+            $table->string('zone_id');
+            $table->string('status');
             $table->timestamps();
         });
     }
