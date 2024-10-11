@@ -2,11 +2,15 @@
 
 namespace App\Livewire\Students;
 
+use App\Concerns\Livewire\WithToast;
+use App\Models\Guardian;
 use App\Models\School;
 use App\Models\Student;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class Edit extends Component {
+    use WithToast, WithFileUploads;
 
     public Student $student;
 
@@ -22,20 +26,20 @@ class Edit extends Component {
 
     function rules(){
         return [
-            'admission_no' => 'required|string|unique:students,admission_no',
             'school_id' => 'required|string|exists:schools,id',
             'roll_no' => 'required|string',
-            'phone' => 'required|string',
-            'date_of_birth' => 'required|string|date',
+            'admission_no' => 'required|string|unique:students,admission_no',
+            'admission_date' => 'required|string|date',
             'photo' => 'nullable|image',
             'firstname' => 'required|string',
             'lastname' => 'required|string',
+            'phone' => 'required|string',
+            'date_of_birth' => 'required|string|date',
             'email' => 'required|string|email|unique:students,email',
             'state' => 'required|string',
             'country' => 'required|string',
             'notes' => 'nullable|string',
             'gender' => 'required|string',
-            'admission_date' => 'required|string|date',
             'current_address' => 'required|string',
             'permanent_address' => 'required|string',
             'birth_cert' => 'nullable|file',
@@ -51,11 +55,15 @@ class Edit extends Component {
     }
 
     function save(){
-        dd($this->all());
         $validated = $this->validate();
-        $school = School::find($this->student_id);
         
-        $school->students()->create($validated);
+        $school = School::find($this->student_id);
+        $student = $school->students()->create($validated);
+
+        collect($this->guardians)->each(function($guardian) use($student) {
+            $student->guardians()->create($guardian);
+        });
+
     }    
 
     public function render()

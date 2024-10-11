@@ -17,5 +17,9 @@ class Student extends Model {
         return $this->belongsTo(School::class, 'school_id');
     }    
 
+    function guardians(){
+        return $this->hasMany(Guardian::class, 'student_id');
+    }
+
 
 }
