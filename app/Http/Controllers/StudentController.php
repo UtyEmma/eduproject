@@ -15,6 +15,11 @@ class StudentController extends Controller {
     function create(){
         return view('pages.students.create');
     }
+    
+    function destroy(Student $student){
+        // Delete Guardians as well
+        return $student->delete();
+    }
 
 
 

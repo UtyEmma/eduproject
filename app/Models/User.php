@@ -41,4 +41,12 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    function school(){
+        return $this->belongsTo(School::class, 'school_id');
+    }
+
+    function getFullNameAttribute(){
+        return "{$this->firstname} {$this->lastname}";
+    }
 }

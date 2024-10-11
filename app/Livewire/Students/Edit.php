@@ -3,9 +3,11 @@
 namespace App\Livewire\Students;
 
 use App\Concerns\Livewire\WithToast;
+use App\Library\Token;
 use App\Models\Guardian;
 use App\Models\School;
 use App\Models\Student;
+use Illuminate\Support\Arr;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -14,7 +16,7 @@ class Edit extends Component {
 
     public Student $student;
 
-    public $admission_no, $school_id, $roll_no, $date_of_birth, $student_photo, $firstname, $lastname, $email, $state, $country, $password, $notes, $gender, $admission_date, $current_address, $permanent_address, $birth_cert, $lga_cert, $phone;
+    public $admission_no, $school_id, $roll_no, $date_of_birth, $photo, $firstname, $lastname, $email, $state, $country, $lga, $password, $notes, $gender, $admission_date, $current_address, $permanent_address, $birth_cert, $lga_cert, $phone;
 
     public $guardians = [];
 
@@ -38,6 +40,7 @@ class Edit extends Component {
             'email' => 'required|string|email|unique:students,email',
             'state' => 'required|string',
             'country' => 'required|string',
+            'lga' => 'required|string',
             'notes' => 'nullable|string',
             'gender' => 'required|string',
             'current_address' => 'required|string',
@@ -45,24 +48,33 @@ class Edit extends Component {
             'birth_cert' => 'nullable|file',
             'lga_cert' => 'nullable|file',
             'guardians' => 'required|array',
-            'guardians.relationship' => 'required|string',
-            'guardians.name' => 'required|string',
-            'guardians.email' => 'required|string|email',
-            'guardians.phone' => 'required|string',
-            'guardians.occupation' => 'required|string',
-            'guardians.address' => 'required|string',
+            'guardians.*.relationship' => 'required|string',
+            'guardians.*.name' => 'required|string',
+            'guardians.*.email' => 'required|string|email',
+            'guardians.*.phone' => 'required|string',
+            'guardians.*.occupation' => 'required|string',
+            'guardians.*.address' => 'required|string',
         ];
     }
 
     function save(){
         $validated = $this->validate();
-        
-        $school = School::find($this->student_id);
-        $student = $school->students()->create($validated);
 
-        collect($this->guardians)->each(function($guardian) use($student) {
+        $school = School::find($this->school_id);
+        $guardians = Arr::pull($this->guardians, 'guardians');
+        $password = Token::text(11);
+
+        $validated['birth_cert'] = $this->birth_cert->storePublicly() ?: null;
+        $validated['lga_cert'] = $this->birth_cert->storePublicly() ?: null;
+        $validated['password'] = $password;
+        $student = $school->students()->create($validated);
+        
+        collect($guardians)->each(function($guardian) use($student) {
             $student->guardians()->create($guardian);
         });
+
+        $this->toast('Student Created Successfully', 'Success')->success();
+        $this->redirect(route('students'));
 
     }    
 

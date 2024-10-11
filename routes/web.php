@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\StudentController;
@@ -33,7 +34,18 @@ Route::middleware('auth')->group(function(){
     Route::prefix('students')->group(function(){
         Route::get('', [StudentController::class, 'index'])->name('students');
         Route::get('new', [StudentController::class, 'create'])->name('students.create');
+        Route::prefix('{student}')->group(function(){
+            Route::get('delete', [StudentController::class, 'destroy'])->name('students.destroy');
+        });
     });
+
+    Route::prefix('admins')->group(function(){
+        Route::get('', [AdminController::class, 'index'])->name('admins');
+
+        Route::prefix('{user}')->group(function(){
+            Route::get('delete', [AdminController::class, 'destroy'])->name('admins.destroy');
+        });
+    }); 
 });
 
 Route::get('logout', LogoutController::class)->name('logout');

@@ -2,8 +2,7 @@
     
     <div class="aside-logo flex-column-auto px-9 mb-9 mb-lg-17 mx-auto" id="kt_aside_logo">
         <a href="{{route('dashboard')}}">
-            <img alt="Logo" src="/assets/media/logos/default.svg" class="h-30px logo theme-light-show" />
-            <img alt="Logo" src="/assets/media/logos/default-dark.svg" class="h-30px logo theme-dark-show" />
+            <img alt="Logo" src="/assets/media/logos/logo.jpg" class="h-50px rounded logo" />
         </a>
     </div>
     
@@ -34,24 +33,24 @@
                         <span class="menu-title">Local Governments</span>
                     </a>
                 </div> --}}
-                <div class="menu-item {{request()->is('schools*') ? 'here' : ''}}">
-                    <a href="{{route('schools')}}" class="menu-link">
+                <div class="menu-item ">
+                    <a href="{{route('schools')}}" class="menu-link {{request()->is('schools*') ? 'here' : ''}}">
                         <span class="menu-icon">
                             <i class="ki-outline ki-teacher fs-2"></i>
                         </span>
                         <span class="menu-title">Schools</span>
                     </a>
                 </div>
-                <div class="menu-item {{request()->routeIs('students') ? 'active' : ''}}">
-                    <a href="{{route('students')}}" class="menu-link">
+                <div class="menu-item ">
+                    <a href="{{route('students')}}" class="menu-link {{request()->is('students') ? 'active' : ''}}">
                         <span class="menu-icon">
                             <i class="ki-outline ki-user fs-2"></i>
                         </span>
                         <span class="menu-title">Students</span>
                     </a>
                 </div>
-                <div class="menu-item">
-                    <a href="#" class="menu-link">
+                <div class="menu-item ">
+                    <a href="{{route('admins')}}" class="menu-link {{request()->routeIs('admins') ? 'active' : ''}}">
                         <span class="menu-icon">
                             <i class="ki-outline ki-people fs-2"></i>
                         </span>
@@ -74,12 +73,12 @@
                         <span class="menu-title">Settings</span>
                     </a>
                 </div>
-                <div class="menu-item {{request()->routeIs('students.create') ? 'active' : ''}}">
-                    <a href="{{route('students.create')}}" class="menu-link">
+                <div class="menu-item ">
+                    <a href="{{route('students.create')}}" class="menu-link {{request()->routeIs('students.create') ? 'active' : ''}}">
                         <span class="menu-icon">
                             <i class="ki-outline ki-plus fs-2"></i>
                         </span>
-                        <span class="menu-title">New Students</span>
+                        <span class="menu-title">New Student</span>
                     </a>
                 </div>
             </div>
