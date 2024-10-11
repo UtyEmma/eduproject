@@ -1,16 +1,16 @@
-<x-dashboard-layout title="Administrators" heading="Administrators">
+<x-dashboard-layout title="Administration" heading="Administration">
     <div class="card">
         <div class="card-body">
             <div class="d-flex justify-content-between">
                 <div>
-                    <x-input.group wire:model.live.debounce.300ms="keyword" class="w-200px" placeholder="Search Schools">
+                    <x-input.group wire:model.live.debounce.300ms="keyword" class="w-200px" placeholder="Search Users">
                         <x-slot:left>
                             <i class="ki-outline ki-magnifier fs-1"></i>
                         </x-slot:left>
                     </x-input.group>    
                 </div>
                 <div class="card-title">
-                    <a href="{{route('students.create')}}" class="btn btn-primary" >Add Student</a>
+                    <a href="{{route('students.create')}}" class="btn btn-primary" >Add User</a>
                 </div>
             </div>
 
@@ -19,6 +19,7 @@
                     <thead class="border-gray-200 fs-5 fw-semibold bg-lighten">
                         <tr>
                             <th>Name</th>
+                            <th>Role</th>
                             <th>School</th>
                             <th></th>
                         </tr>
@@ -30,6 +31,7 @@
                                 <td>
                                     <a href="#">{{$admin->fullname}}</a>
                                 </td>
+                                <td>{{$admin->role->label()}}</td>
                                 <td>{{$admin->school?->name}}</td>
                                 <td>
                                     <a href="#" class="btn btn-sm btn-icon btn-light w-30px h-30px">
@@ -38,7 +40,7 @@
                                     <a href="#" class="btn btn-sm btn-icon btn-light w-30px h-30px">
                                         <i class="text-muted ki-outline ki-pencil fs-3"></i>
                                     </a>
-                                    <x-swal href="{{route('admins.destroy', ['user' => $admins->id])}}" class="btn btn-sm btn-icon btn-light-danger w-30px h-30px">
+                                    <x-swal href="{{route('admins.destroy', ['user' => $admin->id])}}" class="btn btn-sm btn-icon btn-light-danger w-30px h-30px">
                                         <i class="ki-outline ki-trash fs-2"></i>
                                     </x-swal>
                                 </td>
