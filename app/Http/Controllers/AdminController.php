@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class AdminController extends Controller {
     
     function index(Request $request){
-        $admins = User::paginate();
+        $admins = User::latest()->paginate();
         return view('pages.admins.index', compact('admins'));
     }
 

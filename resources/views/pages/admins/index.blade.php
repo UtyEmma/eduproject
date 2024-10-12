@@ -1,4 +1,4 @@
-<x-dashboard-layout title="Administration" heading="Administration">
+<x-dashboard-layout title="Administration" heading="Staff">
     <div class="card">
         <div class="card-body">
             <div class="d-flex justify-content-between">
@@ -10,7 +10,7 @@
                     </x-input.group>    
                 </div>
                 <div class="card-title">
-                    <a href="{{route('students.create')}}" class="btn btn-primary" >Add User</a>
+                    <x-button data-bs-toggle="modal" data-bs-target="#edit-admin" class="btn-primary" >Add Staff</x-button>
                 </div>
             </div>
 
@@ -21,6 +21,7 @@
                             <th>Name</th>
                             <th>Role</th>
                             <th>School</th>
+                            <th>Created At</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -33,10 +34,11 @@
                                 </td>
                                 <td>{{$admin->role->label()}}</td>
                                 <td>{{$admin->school?->name}}</td>
+                                <td>{{Date::parse($admin->created_at)->format('jS F Y, h:m A')}}</td>
                                 <td>
-                                    <a href="#" class="btn btn-sm btn-icon btn-light w-30px h-30px">
+                                    {{-- <a href="#" class="btn btn-sm btn-icon btn-light w-30px h-30px">
                                         <i class="text-muted ki-outline ki-eye fs-2"></i>
-                                    </a>
+                                    </a> --}}
                                     <a href="#" class="btn btn-sm btn-icon btn-light w-30px h-30px">
                                         <i class="text-muted ki-outline ki-pencil fs-3"></i>
                                     </a>
@@ -52,6 +54,8 @@
 
                 {{$admins->links()}}
             </div>
+
+            <livewire:admins.edit modal="edit-admin" />
         </div>
     </div>
 </x-dashboard-layout>

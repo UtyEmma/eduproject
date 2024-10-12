@@ -26,8 +26,8 @@ new #[Layout('layouts.auth')] class extends Component
 
 <form class="form w-100" wire:submit="login">
     <div class="text-center mb-11">
-        <h1 class="text-gray-900 fw-bolder mb-3">Sign In</h1>
-        <div class="text-gray-500 fw-semibold fs-6">Your Social Campaigns</div>
+        <h1 class="text-gray-900 fw-bolder mb-3">Welcome back</h1>
+        <div class="text-gray-500 fw-semibold fs-6">Login to your account</div>
     </div>
 
     <div class="fv-row mb-8">
@@ -50,6 +50,6 @@ new #[Layout('layouts.auth')] class extends Component
         <x-button class="btn-primary" wire:loading wire:target="login" >Login</x-button>
     </div>
 
-    <div class="text-gray-500 text-center fw-semibold fs-6">Not a Member yet? 
-    <a href="authentication/layouts/corporate/sign-up.html" class="link-primary">Sign up</a></div>
+    {{-- <div class="text-gray-500 text-center fw-semibold fs-6">Not a Member yet? 
+    <a href="authentication/layouts/corporate/sign-up.html" class="link-primary">Sign up</a></div> --}}
 </form>

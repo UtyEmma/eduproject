@@ -2,14 +2,15 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\ZoneController;
 use Illuminate\Support\Facades\Route;
 
-Route::view('/', 'welcome');
+// Route::view('/', 'welcome');
 
-Route::view('dashboard', 'dashboard')
+Route::get('/', [DashboardController::class, 'index'])
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
@@ -24,6 +25,7 @@ Route::middleware('auth')->group(function(){
             Route::get('', [ZoneController::class, 'show'])->name('zones.show');
             Route::get('schools', [ZoneController::class, 'schools'])->name('zones.schools');
             Route::get('lgas', [ZoneController::class, 'lgas'])->name('zones.lgas');
+            Route::get('delete', [ZoneController::class, 'destroy'])->name('zones.destroy');
         });
     });
 

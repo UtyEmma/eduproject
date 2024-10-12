@@ -31,6 +31,7 @@
         });
 
         $($el).on('change', (e) => {
+            e.target.dispatchEvent(new Event('change'));
             for (const name of e.target.getAttributeNames()) {
                 if(name.includes('wire:model')) return $wire.set(e.target.getAttribute(name), $(e.target).select2('val'));
                 if(name.includes('x-model')) return $el._x_model.set($(e.target).select2('val'));

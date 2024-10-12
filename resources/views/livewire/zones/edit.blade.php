@@ -1,4 +1,4 @@
-<x-modal id="edit-zone" >
+<x-modal id="{{$modal}}" >
     <form wire:submit="save">
         <div class="mb-3">
             <x-input.label>Zone Name</x-input.label>

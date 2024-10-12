@@ -9,8 +9,8 @@
     <div class="aside-menu flex-column-fluid ps-3 ps-lg-5 pe-1 mb-9" id="kt_aside_menu">
         <div class="w-100 hover-scroll-y pe-2 me-2" id="kt_aside_menu_wrapper" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-height="auto" data-kt-scroll-dependencies="#kt_aside_logo, #kt_aside_user, #kt_aside_footer" data-kt-scroll-wrappers="#kt_aside, #kt_aside_menu, #kt_aside_menu_wrapper" data-kt-scroll-offset="0">
             <div class="menu menu-column menu-rounded menu-sub-indention fw-semibold" id="#kt_aside_menu" data-kt-menu="true">
-                <div class="menu-item">
-                    <a href="{{route('dashboard')}}" class="menu-link">
+                <div class="menu-item {{request()->routeIs('dashboard') ? 'here' : ''}}">
+                    <a href="{{route('dashboard')}}" class="menu-link ">
                         <span class="menu-icon">
                             <i class="ki-outline ki-home fs-2"></i>
                         </span>
@@ -33,8 +33,8 @@
                         <span class="menu-title">Local Governments</span>
                     </a>
                 </div> --}}
-                <div class="menu-item ">
-                    <a href="{{route('schools')}}" class="menu-link {{request()->is('schools*') ? 'here' : ''}}">
+                <div class="menu-item {{request()->is('schools*') ? 'here' : ''}}">
+                    <a href="{{route('schools')}}" class="menu-link ">
                         <span class="menu-icon">
                             <i class="ki-outline ki-teacher fs-2"></i>
                         </span>
