@@ -2,9 +2,13 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Controllers\ClassesController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\SchoolClassController;
 use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\ZoneController;
 use Illuminate\Support\Facades\Route;
 
@@ -33,6 +37,17 @@ Route::middleware('auth')->group(function(){
         Route::get('', [SchoolController::class, 'index'])->name('schools');
     });
 
+    Route::prefix('schools')->group(function(){
+        Route::get('', [SchoolController::class, 'index'])->name('schools');
+    });
+
+    Route::prefix('classes')->group(function(){
+        Route::get('', [ClassesController::class, 'index'])->name('classes');
+        Route::prefix('{class}')->group(function(){
+            Route::get('delete', [ClassesController::class, 'destroy'])->name('classes.destroy');
+        });
+    });
+
     Route::prefix('students')->group(function(){
         Route::get('', [StudentController::class, 'index'])->name('students');
         Route::get('new', [StudentController::class, 'create'])->name('students.create');
@@ -48,6 +63,20 @@ Route::middleware('auth')->group(function(){
             Route::get('delete', [AdminController::class, 'destroy'])->name('admins.destroy');
         });
     }); 
+
+    Route::prefix('departments')->group(function(){
+        Route::get('', [DepartmentController::class, 'index'])->name('departments');
+        Route::prefix('{department}')->group(function(){
+            Route::get('delete', [DepartmentController::class, 'destroy'])->name('departments.destroy');
+        });
+    });
+    
+    Route::prefix('subjects')->group(function(){
+        Route::get('', [SubjectController::class, 'index'])->name('subjects');
+        Route::prefix('{subject}')->group(function(){
+            Route::get('delete', [SubjectController::class, 'destroy'])->name('subjects.destroy');
+        });
+    });
 });
 
 Route::get('logout', LogoutController::class)->name('logout');

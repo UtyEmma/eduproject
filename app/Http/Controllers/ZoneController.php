@@ -13,13 +13,14 @@ class ZoneController extends Controller {
     }
     
     function show(Zone $zone){
-        
+        $zone->loadCount(['students', 'lgas', 'schools']);
         return view('pages.zones.show', compact('zone'));
     }
     
     function schools(Zone $zone){
-        $zones = Zone::withCount('lgas')->paginate();
-        return view('pages.zones.schools', compact('zones'));
+        $zone = $zone->loadCount('lgas')->load('schools');
+        $schools = $zone->schools()->withCount(['students'])->latest()->paginate();
+        return view('pages.zones.schools', compact('zone', 'schools'));
     }
     
     function lgas(Zone $zone){

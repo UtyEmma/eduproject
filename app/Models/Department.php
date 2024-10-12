@@ -7,10 +7,13 @@ use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class SchoolClass extends Model {
-    use HasFactory, HasStatus, HasUuids;
+class Department extends Model {
+    use HasFactory, HasUuids, HasStatus;
 
-    protected $fillable = ['name', 'level', 'type'];
+    protected $fillable = ['name'];
 
+    function subjects(){
+        return $this->hasMany(Subject::class, 'department_id');
+    }
 
 }

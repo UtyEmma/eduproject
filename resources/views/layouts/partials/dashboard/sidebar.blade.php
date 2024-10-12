@@ -17,6 +17,13 @@
                         <span class="menu-title">Dashboard</span>
                     </a>
                 </div>
+
+                <div class="menu-item">
+                    <div class="menu-content pb-2">
+                        <span class="menu-section text-muted text-uppercase fs-7 fw-bold">Administration</span>
+                    </div>
+                </div>
+
                 <div class="menu-item {{request()->is('zones*') ? 'here' : ''}}">
                     <a href="{{route('zones')}}" class="menu-link">
                         <span class="menu-icon">
@@ -25,14 +32,64 @@
                         <span class="menu-title">Zones</span>
                     </a>
                 </div>
-                {{-- <div class="menu-item">
+                <div class="menu-item">
                     <a href="#" class="menu-link">
                         <span class="menu-icon">
                             <i class="ki-outline ki-map fs-2"></i>
                         </span>
                         <span class="menu-title">Local Governments</span>
                     </a>
-                </div> --}}
+                </div>
+
+                <div class="menu-item ">
+                    <a href="{{route('admins')}}" class="menu-link {{request()->routeIs('admins') ? 'active' : ''}}">
+                        <span class="menu-icon">
+                            <i class="ki-outline ki-profile-user fs-2"></i>
+                        </span>
+                        <span class="menu-title">Administration</span>
+                    </a>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-content pb-2">
+                        <span class="menu-section text-muted text-uppercase fs-7 fw-bold">Academics</span>
+                    </div>
+                </div>
+
+                
+                <div class="menu-item {{request()->is('departments*') ? 'here' : ''}}">
+                    <a href="{{route('departments')}}" class="menu-link ">
+                        <span class="menu-icon">
+                            <i class="ki-outline ki-category fs-2"></i>
+                        </span>
+                        <span class="menu-title">Departments</span>
+                    </a>
+                </div>
+                
+                <div class="menu-item {{request()->is('subjects*') ? 'here' : ''}}">
+                    <a href="{{route('subjects')}}" class="menu-link ">
+                        <span class="menu-icon">
+                            <i class="ki-outline ki-book-open fs-2"></i>
+                        </span>
+                        <span class="menu-title">Subjects</span>
+                    </a>
+                </div>
+
+                <div class="menu-item {{request()->is('classes*') ? 'here' : ''}}">
+                    <a href="{{route('classes')}}" class="menu-link ">
+                        <span class="menu-icon">
+                            <i class="ki-outline ki-people fs-2"></i>
+                        </span>
+                        <span class="menu-title">Classes</span>
+                    </a>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-content pb-2">
+                        <span class="menu-section text-muted text-uppercase fs-7 fw-bold">Students</span>
+                    </div>
+                </div>
+
                 <div class="menu-item {{request()->is('schools*') ? 'here' : ''}}">
                     <a href="{{route('schools')}}" class="menu-link ">
                         <span class="menu-icon">
@@ -41,6 +98,7 @@
                         <span class="menu-title">Schools</span>
                     </a>
                 </div>
+
                 <div class="menu-item ">
                     <a href="{{route('students')}}" class="menu-link {{request()->is('students') ? 'active' : ''}}">
                         <span class="menu-icon">
@@ -49,14 +107,42 @@
                         <span class="menu-title">Students</span>
                     </a>
                 </div>
+
                 <div class="menu-item ">
-                    <a href="{{route('admins')}}" class="menu-link {{request()->routeIs('admins') ? 'active' : ''}}">
+                    <a href="{{route('students.create')}}" class="menu-link {{request()->routeIs('students.create') ? 'active' : ''}}">
                         <span class="menu-icon">
-                            <i class="ki-outline ki-people fs-2"></i>
+                            <i class="ki-outline ki-plus fs-2"></i>
                         </span>
-                        <span class="menu-title">Administration</span>
+                        <span class="menu-title">New Student</span>
                     </a>
                 </div>
+
+                
+                <div class="menu-item ">
+                    <a href="{{route('students')}}" class="menu-link {{request()->is('students') ? 'active' : ''}}">
+                        <span class="menu-icon">
+                            <i class="ki-outline ki-user-square fs-2"></i>
+                        </span>
+                        <span class="menu-title">Parents/Guardians</span>
+                    </a>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-content pb-2">
+                        <span class="menu-section text-muted text-uppercase fs-7 fw-bold">Examinations</span>
+                    </div>
+                </div>
+
+
+                <div class="menu-item">
+                    <a href="#" class="menu-link">
+                        <span class="menu-icon">
+                            <i class="ki-outline ki-notification-status fs-2"></i>
+                        </span>
+                        <span class="menu-title">Exams</span>
+                    </a>
+                </div>
+
                 <div class="menu-item">
                     <a href="#" class="menu-link">
                         <span class="menu-icon">
@@ -65,20 +151,28 @@
                         <span class="menu-title">Results</span>
                     </a>
                 </div>
+
+                <div class="menu-item">
+                    <div class="menu-content pb-2">
+                        <span class="menu-section text-muted text-uppercase fs-7 fw-bold">Misc</span>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <a href="#" class="menu-link">
+                        <span class="menu-icon">
+                            <i class="ki-outline ki-notification-bing fs-2"></i>
+                        </span>
+                        <span class="menu-title">Notice Board</span>
+                    </a>
+                </div>
+
                 <div class="menu-item">
                     <a href="#" class="menu-link">
                         <span class="menu-icon">
                             <i class="ki-outline ki-gear  fs-2"></i>
                         </span>
                         <span class="menu-title">Settings</span>
-                    </a>
-                </div>
-                <div class="menu-item ">
-                    <a href="{{route('students.create')}}" class="menu-link {{request()->routeIs('students.create') ? 'active' : ''}}">
-                        <span class="menu-icon">
-                            <i class="ki-outline ki-plus fs-2"></i>
-                        </span>
-                        <span class="menu-title">New Student</span>
                     </a>
                 </div>
             </div>

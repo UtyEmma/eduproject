@@ -8,7 +8,7 @@
         "debug": false,
         "newestOnTop": false,
         "progressBar": false,
-        "positionClass": "toastr-top-right",
+        "positionClass": "toastr-bottom-right",
         "preventDuplicates": false,
         "onclick": null,
         "showDuration": "300",

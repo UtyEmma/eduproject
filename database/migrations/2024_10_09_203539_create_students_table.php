@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('students', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('school_id');
+            $table->string('class_id')->nullable();
             $table->string('admission_no')->nullable();
             $table->string('firstname');
             $table->string('lastname');

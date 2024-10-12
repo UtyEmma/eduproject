@@ -13,4 +13,6 @@ class SchoolController extends Controller {
         return view('pages.schools.index', compact('schools'));
     }
 
+    
+
 }

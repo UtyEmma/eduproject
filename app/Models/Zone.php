@@ -15,9 +15,12 @@ class Zone extends Model {
         return $this->hasMany(LocalGovernment::class, 'zone_id');
     }
 
-    
     function schools(){
         return $this->hasMany(School::class, 'zone_id');
+    }
+
+    function students(){
+        return $this->through('schools')->has('students');
     }
 
 }

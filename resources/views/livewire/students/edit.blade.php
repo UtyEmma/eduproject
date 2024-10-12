@@ -6,12 +6,24 @@
                     <h4>Admission Information</h4>
                 </div>
 
-                <div class="col-md-12">
+                <div class="col-md-8">
                     <x-input.label>School</x-input.label>
                     <x-input.select wire:model="school_id" placeholder="Select School" >
                         <option value=""></option>
                         @forelse ($schools as $school)
                             <option value="{{$school->id}}">{{$school->name}}</option>
+                        @empty
+                        @endforelse
+                    </x-input.select>
+                    <x-input.error key="school_id" />
+                </div>
+
+                <div class="col-md-4">
+                    <x-input.label>Class</x-input.label>
+                    <x-input.select wire:model="class_id" placeholder="Select Class" >
+                        <option value=""></option>
+                        @forelse ($classes as $class)
+                            <option value="{{$class->id}}">{{$class->name}}</option>
                         @empty
                         @endforelse
                     </x-input.select>
@@ -139,7 +151,7 @@
         <div class="card-body">
             <div class="row row-cols-md-2 g-5">
                 <div class="col-md-12">
-                    <h4>Documents</h4>
+                    <h4>Identity Documents</h4>
                 </div>
 
                 <div class="col-md-12" >
@@ -157,7 +169,7 @@
         </div>
     </div>
 
-    <div class="my-5"></div>
+    {{-- <div class="my-5"></div>
 
     <div class="card card-bordered">
         <div class="card-body">
@@ -171,7 +183,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <div class="my-5"></div>
 

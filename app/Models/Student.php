@@ -12,7 +12,7 @@ use Illuminate\Notifications\Notifiable;
 class Student extends Model {
     use HasFactory, HasUuids, Authenticatable, Notifiable, HasStatus;
 
-    protected $fillable = ['school_id', 'admission_no', 'roll_no', 'date_of_birth', 'photo', 'firstname', 'lastname', 'email', 'state', 'country', 'password', 'notes', 'gender', 'admission_date', 'current_address', 'permanent_address', 'lga', 'gender', 'birth_cert', 'lga_cert'];
+    protected $fillable = ['school_id', 'class_id', 'admission_no', 'roll_no', 'date_of_birth', 'photo', 'firstname', 'lastname', 'email', 'state', 'country', 'password', 'notes', 'gender', 'admission_date', 'current_address', 'permanent_address', 'lga', 'gender', 'birth_cert', 'lga_cert'];
 
     function school(){
         return $this->belongsTo(School::class, 'school_id');
@@ -28,6 +28,10 @@ class Student extends Model {
 
     function lga(){
         return $this->belongsTo(LocalGovernment::class, 'lga_id');
+    }
+
+    function  class(){
+        return $this->belongsTo(Classes::class, 'class_id');
     }
 
     function getFullNameAttribute(){
