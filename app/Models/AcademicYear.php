@@ -13,6 +13,11 @@ class AcademicYear extends Model
 
     protected $fillable = ['year', 'title', 'starts_at', 'ends_at'];
 
+    protected $casts = [
+        'starts_at' => 'date',
+        'ends_at' => 'date',
+    ];
+
     function getIsCurrentAttribute(){
         return Date::parse(now())->between($this->starts_at, $this->ends_at);
     }

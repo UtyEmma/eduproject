@@ -1,4 +1,4 @@
-<x-dashboard-layout title="Manage Academic Years" heading="Manage Academic Years" >
+<x-dashboard-layout title="Manage Examinations" heading="Manage Examinations" >
     <div class="card">
         <div class="card-body">
             <div class="d-flex justify-content-between">
