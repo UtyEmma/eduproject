@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Library\AcademicSession;
 use App\Models\Guardian;
 use App\Models\LocalGovernment;
 use App\Models\School;
@@ -17,6 +18,7 @@ class DashboardController extends Controller {
         $zones = Zone::count();
         $lgas = LocalGovernment::count();
         $schools = School::count();
+
         return view('dashboard', compact('students', 'guardians', 'zones', 'lgas', 'schools'));
     }
 

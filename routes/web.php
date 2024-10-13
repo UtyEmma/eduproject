@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AcademicYearController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\ClassesController;
@@ -78,6 +79,13 @@ Route::middleware('auth')->group(function(){
         Route::get('', [SubjectController::class, 'index'])->name('subjects');
         Route::prefix('{subject}')->group(function(){
             Route::get('delete', [SubjectController::class, 'destroy'])->name('subjects.destroy');
+        });
+    });
+
+    Route::prefix('academic-years')->group(function(){
+        Route::get('', [AcademicYearController::class, 'index'])->name('academic-years');
+        Route::prefix('{academicYear}')->group(function(){
+            Route::get('delete', [AcademicYearController::class, 'destroy'])->name('academic-years.destroy');
         });
     });
 });

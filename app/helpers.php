@@ -1,5 +1,6 @@
 <?php
 
+use App\Library\AcademicYears;
 use App\Library\Toast;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -29,5 +30,13 @@ if(!function_exists('jsonify')) {
         return json_decode(json_encode($arr));
     }
 }
+
+if(!function_exists('academicYears')) {
+    function academicYears()    {
+        return new AcademicYears;
+    }
+}
+
+
 
 

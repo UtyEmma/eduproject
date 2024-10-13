@@ -55,7 +55,15 @@
                         <span class="menu-section text-muted text-uppercase fs-7 fw-bold">Academics</span>
                     </div>
                 </div>
-
+                
+                <div class="menu-item {{request()->is('academic-years*') ? 'here' : ''}}">
+                    <a href="{{route('academic-years')}}" class="menu-link ">
+                        <span class="menu-icon">
+                            <i class="ki-outline ki-calendar-2 fs-2"></i>
+                        </span>
+                        <span class="menu-title">Academic Years</span>
+                    </a>
+                </div>
                 
                 <div class="menu-item {{request()->is('departments*') ? 'here' : ''}}">
                     <a href="{{route('departments')}}" class="menu-link ">
