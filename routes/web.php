@@ -44,6 +44,9 @@ Route::middleware('auth')->group(function(){
     Route::prefix('classes')->group(function(){
         Route::get('', [ClassesController::class, 'index'])->name('classes');
         Route::prefix('{class}')->group(function(){
+            Route::get('', [ClassesController::class, 'show'])->name('classes.show');
+            Route::get('students', [ClassesController::class, 'students'])->name('classes.students');
+            Route::get('subjects', [ClassesController::class, 'subjects'])->name('classes.subjects');
             Route::get('delete', [ClassesController::class, 'destroy'])->name('classes.destroy');
         });
     });

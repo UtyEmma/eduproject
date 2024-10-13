@@ -30,13 +30,13 @@
                         @forelse ($classes as $class)
                             <tr>
                                 <td>
-                                    <a href="#">{{$class->name}}</a>
+                                    <a href="{{route('classes.show', ['class' => $class->id])}}">{{$class->name}}</a>
                                 </td>
                                 <td>{{$class->type->label()}}</td>
                                 <td>{{$class->level}}</td>
                                 <td>{{$class->students_count}}</td>
                                 <td>
-                                    <a href="#" class="btn btn-sm btn-icon btn-light w-30px h-30px">
+                                    <a href="{{route('classes.show', ['class' => $class->id])}}" class="btn btn-sm btn-icon btn-light w-30px h-30px">
                                         <i class="text-muted ki-outline ki-eye fs-2"></i>
                                     </a>
                                     <a href="#" data-bs-target="#edit-class-{{$class->id}}" data-bs-toggle="modal" class="btn btn-sm btn-icon btn-light w-30px h-30px">

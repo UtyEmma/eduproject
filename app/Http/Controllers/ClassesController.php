@@ -12,6 +12,21 @@ class ClassesController extends Controller
         return view('pages.classes.index', compact('classes'));
     }
 
+    function show(Classes $class){
+        $class->loadCount('subjects', 'students');
+        return view('pages.classes.show', compact('class'));
+    }
+    
+    function students(Classes $class) {
+        $class->load('students');
+        return view('pages.classes.students', compact('class'));
+    }
+    
+    function subjects(Classes $class) {
+        $class->load('subjects');
+        return view('pages.classes.subjects', compact('class'));
+    }
+
     function destroy(Classes $class) {
         $class->delete();
         return back();

@@ -21,4 +21,10 @@ class Classes extends Model
     function students(){
         return $this->hasMany(Student::class, 'class_id');
     }
+
+    function subjects(){
+        return $this->hasMany(ClassSubject::class, 'class_id');
+    }
+
+
 }
